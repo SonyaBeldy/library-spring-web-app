@@ -1,15 +1,12 @@
 package ru.sonyabeldy.library.models;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 
 public class Person {
 
     private int id;
     private String name;
     private int year;
-    private int person_id;
+//    private int book;
 
     public Person() {
 
@@ -44,11 +41,11 @@ public class Person {
         this.year = year;
     }
 
-    public int getPerson_id() {
-        return person_id;
-    }
-
-    public void setPerson_id(int person_id) {
-        this.person_id = person_id;
-    }
+//    public int getBook() {
+//        return book;
+//    }
+//
+//    public void setBook(int book) {
+//        this.book = book;
+//    }
 }

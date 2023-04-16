@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Edit book</title>
 </head>
 <body>
-$END$
+    <form th:method="PATCH" th:action="@{/book/{id}(id=${book.getId()})}"
+    th:object="${book}">
+<!--        <label type="text" th:field="*{name}" id="name"/>-->
+    </form>
 </body>
 </html>

@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Show person</title>
 </head>
 <body>
-$END$
+
+    <p th:text="${person.getName() + ', ' + person.getYear()}"></p>
+
+    <div th:if="${books.size() == 0}">
+        <p>This person hasn't picked up any books yet</p>
+    </div>
+    <div th:if="${books.size() > 0}">
+        <span><b>Books:</b></span>
+        <div th:each="book : ${books}">
+            <span th:text="${book.getName() + ', ' + book.getAuthor() + ', ' + book.getYear()}"></span>
+        </div>
+    </div>
+    <hr/>
+
+    <a th:href="@{/people/{id}/edit(id=${person.getId()})}">
+        <button>Edit</button>
+    </a>
+    <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+        <input type="submit" value="Delete"/>
+    </form>
 </body>
 </html>
