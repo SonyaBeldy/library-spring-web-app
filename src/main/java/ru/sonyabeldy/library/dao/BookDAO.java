@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import ru.sonyabeldy.library.models.Book;
+import ru.sonyabeldy.library.models.Person;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,11 +36,13 @@ public class BookDAO {
                 .stream().findAny().orElse(null);
     }
 
-    public void setPerson(int id, int person_id) {
-        jdbcTemplate.update("UPDATE Book SET person_id=? WHERE id=?", id, person_id);
+    public void update(int id, Book book) {
+        jdbcTemplate.update("UPDATE Book SET name=?, author=?, year=? WHERE id=?", book.getName(),
+                book.getAuthor(), book.getYear(), id);
     }
 
-    public void setFree(int id) {
-        jdbcTemplate.update("UPDATE Book SET person_id=0 WHERE id=?", id);
+    public void delete(int id) {
+        jdbcTemplate.update("DELETE FROM Book WHERE id=?", id);
     }
+
 }

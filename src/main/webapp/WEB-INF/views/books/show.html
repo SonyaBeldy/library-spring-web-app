@@ -27,8 +27,11 @@
     </div>
 
     <hr/>
-    <input type="submit" value="Edit">
-    <br/>
-    <input type="submit" value="Delete">
+    <a th:href="@{/books/{id}/edit(id=${book.getId()})}">
+        <button>Edit</button>
+    </a>
+    <form th:method="DELETE" th:action="@{/books/{id}(id=${book.getId()})}">
+        <input type="submit" value="Delete"/>
+    </form>
 </body>
 </html>

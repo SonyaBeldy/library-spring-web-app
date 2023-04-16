@@ -64,13 +64,20 @@ public class BooksController {
         return "redirect:/books";
     }
 
-//    @PatchMapping("/{id}")
-//    public String setPersonToBook(@PathVariable("id") int id, @ModelAttribute("person") Person person) {
-//        if (id==0) {
-//            bookDAO.setPerson(id, person.getId());
-//        } else {
-//            bookDAO.setFree(id);
-//        }
-//        return "books/show";
-//    }
+    @GetMapping("/{id}/edit")
+    public String edit(Model model, @PathVariable int id) {
+        model.addAttribute("book", bookDAO.show(id));
+        return "books/edit";
+    }
+    @PatchMapping("/{id}/update")
+    public String update(@PathVariable int id, @ModelAttribute("book") Book book) {
+        bookDAO.update(id, book);
+        return "redirect:/books/{id}";
+    }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable int id) {
+        bookDAO.delete(id);
+        return "redirect:/books";
+    }
 }
